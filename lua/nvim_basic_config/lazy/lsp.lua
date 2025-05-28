@@ -29,7 +29,9 @@ return {
                 "lua_ls",
                 "rust_analyzer",
                 "gopls",
-                "csharp-ls"
+                "csharp-ls",
+                "ts_ls",
+                "biome"
             },
             handlers = {
                 function(server_name) -- default handler (optional)
@@ -104,5 +106,23 @@ return {
                 prefix = "",
             },
         })
+        vim.keymap.set('n', '<leader>d', vim.diagnostic.open_float, { desc = "Show diagnostic at cursor" })
+
+        vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, { desc = 'LSP: Rename' })
+        vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, { desc = 'LSP: Code Action' })
+        vim.keymap.set('n', '<leader>gd', vim.lsp.buf.definition, { desc = 'LSP: Go to Definition' })
+        vim.keymap.set('n', '<leader>gr', require('telescope.builtin').lsp_references, { desc = 'LSP: Find References' })
+        vim.keymap.set('n', '<leader>gi', vim.lsp.buf.implementation, { desc = 'LSP: Go to Implementation' })
+        vim.keymap.set('n', '<leader>D', vim.lsp.buf.type_definition, { desc = 'LSP: Type Definition' })
+        vim.keymap.set('n', '<leader>ds', require('telescope.builtin').lsp_document_symbols, { desc = 'LSP: Document Symbols' })
+        vim.keymap.set('n', '<leader>ws', require('telescope.builtin').lsp_dynamic_workspace_symbols, { desc = 'LSP: Workspace Symbols' })
+        vim.keymap.set('n', '<leader>K', vim.lsp.buf.hover, { desc = 'LSP: Hover Documentation' })
+        vim.keymap.set('n', '<leader>a', function()
+              vim.lsp.buf.format { async = true }
+        end, { desc = 'LSP: Format buffer' })
+
+        vim.keymap.set('n', '<leader>gb', '<C-o>', { desc = 'Go Back from Tag' })
+        vim.keymap.set('n', '<leader>gf', '<C-i>', { desc = 'Go Forward to Tag' })
+
     end
 }
