@@ -1,13 +1,11 @@
 return {
-	'maxmx03/solarized.nvim',
+	"rebelot/kanagawa.nvim",
 	lazy = false,
 	priority = 1000,
-	---@type solarized.config
 	opts = {},
 	config = function(_, opts)
 		vim.o.termguicolors = true
-		vim.o.background = 'light'
-		require('solarized').setup(opts)
-		vim.cmd.colorscheme 'solarized'
+		require("kanagawa").setup(opts)
+		vim.cmd.colorscheme("kanagawa")
 	end,
 }
